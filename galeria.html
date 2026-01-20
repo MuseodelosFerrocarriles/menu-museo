@@ -67,8 +67,8 @@ body {
 .logo-museo {
     position: absolute;
     bottom: 10px;
-    left: 10px;
-    width: 120px;
+    left: auto;
+    width: 300px;
     opacity: 0.9;
     pointer-events: none;
 }
@@ -121,7 +121,7 @@ body {
 <div class="contenedor">
 
     <div class="imagen" id="zonaSwipe">
-        <img id="foto" class="foto" src="./galeria/foto1.jpg" alt="Galería del museo">
+        <img id="foto" class="foto" src="./Galeria/foto1.jpg" alt="Galería del museo">
         <img class="logo-museo" src="./assets/MuseoLogo.png" alt="Museo de los Ferrocarriles">
     </div>
 
@@ -140,7 +140,7 @@ body {
 
 <script>
 const total = 43;
-const fotos = Array.from({ length: total }, (_, i) => `./galeria/foto${i + 1}.jpg`);
+const fotos = Array.from({ length: total }, (_, i) => `./Galeria/foto${i + 1}.jpg`);
 
 let indice = 0;
 
@@ -194,3 +194,4 @@ zonaSwipe.addEventListener("touchend", e => {
 
 </body>
 </html>
+
