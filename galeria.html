@@ -78,8 +78,10 @@ body {
 .controles {
     margin-top: 14px;
     display: flex;
-    gap: 20px;
+    gap: 16px;
     justify-content: center;
+    align-items: center;
+    flex-wrap:wrap;
 }
 
 .boton {
@@ -92,7 +94,23 @@ body {
     border-radius: 999px;
     cursor: pointer;
 }
-
+.boton-flecha {
+    width: 80px;
+    height: 56px;
+    padding: 0;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.boton-volver {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 16px 34px;
+    font-size: 18px;
+    text-decoration: none;
+}
+    
 .boton:hover {
     background: #2b5187;
 }
@@ -128,14 +146,14 @@ body {
     </div>
 
     <div class="controles">
-        <button class="boton" onclick="anterior()">◀ </button>
-        <button class="boton" onclick="siguiente()"> ▶</button>
+        <button class="boton boton-flecha" onclick="anterior()">◀</button>
+        <button class="boton boton-flecha" onclick="siguiente()">▶</button>
     </div>
 
     <div class="contador" id="contador">Foto 1 / 43</div>
 
     <div class="volver">
-        <a href="./index.html">⬅ Volver al menú</a>
+        <a href="./index.html" class="boton boton-volver">← Volver al menú</a>
     </div>
 
 </div>
@@ -201,6 +219,7 @@ function mostrar() {
 
 </body>
 </html>
+
 
 
 
