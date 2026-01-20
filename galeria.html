@@ -142,7 +142,8 @@ body {
 
 <script>
 const total = 43;
-const fotos = Array.from({ length: total }, (_, i) => `./Galeria/foto${i + 1}.jpg`);
+    
+const fotos = Array.from({ length: total }, (_, i) => `Galeria/foto${i + 1}.jpg`);
 
 let indice = 0;
 
@@ -154,48 +155,53 @@ const zonaSwipe = document.getElementById("zonaSwipe");
 img.onerror = () => {
     img.src = "";
 };
-
+    
 function actualizarContador() {
     contador.textContent = `Foto ${indice + 1} / ${total}`;
 }
 
-/* Mostrar SIN depender de onload */
 function mostrar() {
-    img.style.opacity = 0;
-    actualizarContador();
-    setTimeout(() => {
-        img.src = fotos[indice];
-        img.style.opacity = 1;
-    }, 120);
-}
+        img.style.opacity = 0;
 
-function siguiente() {
-    indice = (indice + 1) % fotos.length;
-    mostrar();
-}
-
-function anterior() {
-    indice = (indice - 1 + fotos.length) % fotos.length;
-    mostrar();
-}
-
-/* Swipe */
-let inicioX = 0;
-
-zonaSwipe.addEventListener("touchstart", e => {
-    inicioX = e.touches[0].clientX;
-});
-
-zonaSwipe.addEventListener("touchend", e => {
-    const finX = e.changedTouches[0].clientX;
-    if (Math.abs(finX - inicioX) > 50) {
-        finX < inicioX ? siguiente() : anterior();
+        setTimeout(() => {
+            img.src = fotos[indice];
+            img.style.opacity = 1;
+            actualizarContador();
+        }, 120);
     }
-});
+
+    function siguiente() {
+        indice = (indice + 1) % fotos.length;
+        mostrar();
+    }
+
+    function anterior() {
+        indice = (indice - 1 + fotos.length) % fotos.length;
+        mostrar();
+    }
+
+    // SWIPE
+    let inicioX = 0;
+
+    zonaSwipe.addEventListener("touchstart", e => {
+        inicioX = e.touches[0].clientX;
+    });
+
+    zonaSwipe.addEventListener("touchend", e => {
+        const finX = e.changedTouches[0].clientX;
+        const diff = finX - inicioX;
+        if (Math.abs(diff) > 50) {
+            diff < 0 ? siguiente() : anterior();
+        }
+    });
+
+    // MOSTRAR PRIMERA FOTO
+    mostrar();
 </script>
 
 </body>
 </html>
+
 
 
 
